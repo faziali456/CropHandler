@@ -55,8 +55,8 @@ class Crop extends StatefulWidget {
         AssetBundle bundle,
         String package,
         this.aspectRatio,
-        this.maximumScale: 2.0,
-        this.alwaysShowGrid: false,
+        this.maximumScale: 1.0,
+        this.alwaysShowGrid: true,
         this.onImageError,
       })  : image = AssetImage(assetName, bundle: bundle, package: package),
         assert(maximumScale != null),
@@ -110,7 +110,7 @@ class CropState extends State<Crop> with TickerProviderStateMixin, Drag {
     super.initState();
     _area = Rect.zero;
     _view = Rect.zero;
-    _scale = 1.0;
+    _scale = 5.0;
     _ratio = 1.0;
     _lastFocalPoint = Offset.zero;
     _action = _CropAction.none;

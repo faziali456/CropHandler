@@ -33,7 +33,8 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(title: Text(title)),
           body: Column(
             children: [
-              Expanded(child: ImageBeforeAfterCrop(image)),
+
+              Expanded(child:Padding(padding: EdgeInsets.all(20), child: ImageBeforeAfterCrop(image))),
               Text('Tap and drag inside image on the left. Single tap to reset to entire image.'),
             ],
           ),

@@ -13,7 +13,6 @@ class ImageBeforeAfterCrop extends StatefulWidget {
 
 class _ImageBeforeAfterCropState extends State<ImageBeforeAfterCrop> {
   ImageCropDetails _cropDetails;
-  final cropKey = GlobalKey<CropState>();
   final cropKey2 = GlobalKey<CropState>();
   String _sample = "images/cat.jpg";
 

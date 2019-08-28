@@ -11,7 +11,7 @@ const _kCropGridColor = const Color.fromRGBO(0xd0, 0xd0, 0xd0, 0.9);
 const _kCropOverlayActiveOpacity = 0.3;
 const _kCropOverlayInactiveOpacity = 0.7;
 const _kCropHandleColor = const Color.fromRGBO(0xd0, 0xd0, 0xd0, 1.0);
-const _kCropHandleSize = 10.0;
+const _kCropHandleSize = 20.0;
 const _kCropHandleHitSize = 48.0;
 const _kCropMinFraction = 0.1;
 enum _CropAction { none, moving, cropping, scaling }
@@ -24,27 +24,15 @@ class Crop extends StatefulWidget {
   final bool alwaysShowGrid;
   final ImageErrorListener onImageError;
 
+
   const Crop({
     Key key,
     this.image,
     this.aspectRatio,
     this.maximumScale: 2.0,
-    this.alwaysShowGrid: false,
+    this.alwaysShowGrid: true,
     this.onImageError,
   })  : assert(image != null),
-        assert(maximumScale != null),
-        assert(alwaysShowGrid != null),
-        super(key: key);
-
-  Crop.file(
-      File file, {
-        Key key,
-        double scale = 1.0,
-        this.aspectRatio,
-        this.maximumScale: 2.0,
-        this.alwaysShowGrid: false,
-        this.onImageError,
-      })  : image = FileImage(file, scale: scale),
         assert(maximumScale != null),
         assert(alwaysShowGrid != null),
         super(key: key);
@@ -55,8 +43,8 @@ class Crop extends StatefulWidget {
         AssetBundle bundle,
         String package,
         this.aspectRatio,
-        this.maximumScale: 1.0,
-        this.alwaysShowGrid: true,
+        this.maximumScale: 2.0,
+        this.alwaysShowGrid: false,
         this.onImageError,
       })  : image = AssetImage(assetName, bundle: bundle, package: package),
         assert(maximumScale != null),
@@ -110,7 +98,7 @@ class CropState extends State<Crop> with TickerProviderStateMixin, Drag {
     super.initState();
     _area = Rect.zero;
     _view = Rect.zero;
-    _scale = 5.0;
+    _scale = 1.0;
     _ratio = 1.0;
     _lastFocalPoint = Offset.zero;
     _action = _CropAction.none;

@@ -19,7 +19,8 @@ class _ImageBeforeAfterCropState extends State<ImageBeforeAfterCrop> {
   @override
   Widget build(BuildContext context) => Column(
         children: [
-          Expanded(child: Crop.asset(_sample, key: cropKey2),),
+          Expanded(
+            child: Crop.asset(_sample, key: cropKey2),),
         ],
       );
 

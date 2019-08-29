@@ -38,8 +38,12 @@ class MyApp extends StatelessWidget {
         home: Scaffold(
           appBar: AppBar(title: Text(title)),
           body:
-              Container(
-                  child:Padding(padding: EdgeInsets.all(10), child: ImageBeforeAfterCrop(image))),
+              Column(
+                children: <Widget>[
+                 Expanded(child:ImageBeforeAfterCrop(image)),
+
+                ],
+              )
         ),
       );
 }

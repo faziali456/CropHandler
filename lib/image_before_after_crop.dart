@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'crop.dart';
 import 'cropped_image.dart';
+import 'image_crop.dart';
 import 'image_cropper.dart';
 
 class ImageBeforeAfterCrop extends StatefulWidget {
@@ -14,15 +17,23 @@ class ImageBeforeAfterCrop extends StatefulWidget {
 class _ImageBeforeAfterCropState extends State<ImageBeforeAfterCrop> {
   ImageCropDetails _cropDetails;
   final cropKey2 = GlobalKey<CropState>();
+  final cropKey = GlobalKey<CropState>();
   String _sample = "images/cat.jpg";
+  File _file;
 
   @override
-  Widget build(BuildContext context) => Column(
+  Widget build(BuildContext context) => Row(
         children: [
           Expanded(
             child: Crop.asset(_sample, key: cropKey2),),
+
+          Expanded(
+            child:  Image.asset(_sample),
+          ) 
+
         ],
       );
 
-  void onImageCrop(ImageCropDetails cropDetails) => setState(() => _cropDetails = cropDetails);
+
+
 }

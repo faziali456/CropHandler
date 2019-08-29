@@ -25,6 +25,7 @@ class Crop extends StatefulWidget {
   final ImageErrorListener onImageError;
 
 
+
   const Crop({
     Key key,
     this.image,
@@ -77,6 +78,13 @@ class CropState extends State<Crop> with TickerProviderStateMixin, Drag {
   Tween<Rect> _viewTween;
   Tween<double> _scaleTween;
   ImageStreamListener _imageListener;
+  Color _bgColor;
+  Rect _cropRect;
+  Size _boxSizeAtCrop;
+  Rect _dragRect;
+  Offset _startDrag;
+  Offset _currentDrag;
+  final GlobalKey _imageKey = GlobalKey();
 
   double get scale => _area.shortestSide / _scale;
 
@@ -235,9 +243,6 @@ class CropState extends State<Crop> with TickerProviderStateMixin, Drag {
 
 
 
-void _crop(Rect rect, Size size) {
-
-}
 
   void _updateImage(ImageInfo imageInfo, bool synchronousCall) {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
@@ -266,7 +271,6 @@ void _crop(Rect rect, Size size) {
         );
       });
     });
-    _crop(_view, _area.size);
     WidgetsBinding.instance.ensureVisualUpdate();
   }
 
